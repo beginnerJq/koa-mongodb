@@ -45,7 +45,7 @@ class Db {
         return new Promise((resolve, reject) => {
             this.connect().then((db) => {
                 let result = db.collection(collectionName).find(json);
-                result.toArray(function (err, docs) {
+                result.toArray((err, docs) => {
                     err ? reject(err) : resolve(docs);
                 });
             });
@@ -96,7 +96,7 @@ class Db {
     remove(collectionName, json) {
         return new Promise((resolve, reject) => {
             this.connect().then((db) => {
-                db.collection(collectionName).removeOne(json, function (err, result) {
+                db.collection(collectionName).removeOne(json, (err, result) => {
                     err ? reject(err) : resolve(result);
                 });
             });
